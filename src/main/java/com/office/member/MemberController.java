@@ -76,6 +76,13 @@ public class MemberController extends HttpServlet {
 			}
 			
 			break;
+			
+		case "/signout_confirm.mem":
+			
+			request.getSession().invalidate();
+			nextPage = "/";
+			
+			break;
 
 		}
 		
