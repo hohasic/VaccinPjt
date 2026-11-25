@@ -22,14 +22,44 @@ public class MemberService {
 		
 		boolean isMember = memberDao.isMember(admin_id);
 		
+		int result = 0;
 		// 2. 회원가입
 		if (!isMember) {
-			int result = memberDao.insertNewMember(
+			result = memberDao.insertNewMember(
 					new MemberDto(admin_id, admin_pw, admin_mail, admin_phone));
+			
+			if (result > 0) {
+				System.out.println("[MemberService] SIGNUP SUCCESS!!");
+				
+			} else {
+				System.out.println("[MemberService] SIGNUP FAIL!!");
+				
+			}
+			
+		} else {
+			result = 0;
 			
 		}
 		
-		return 0;
+		return result;
+		
+	}
+
+	public String signinConfirm(HttpServletRequest request, HttpServletResponse response) {
+		
+		String admin_id = request.getParameter("admin_id");
+		String admin_pw = request.getParameter("admin_pw");
+		
+		MemberDto selectedMemberDto = memberDao.selectMemberByAdminId(admin_id);
+		
+		if (selectedMemberDto != null && selectedMemberDto.getAdmin_pw().equals(admin_pw)) {
+			System.out.println("[MemberService] SIGNIN SUCCESS!!");
+
+			return admin_id;
+			
+		} 
+		
+		return null;
 		
 	}
 	
