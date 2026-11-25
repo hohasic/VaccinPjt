@@ -17,7 +17,7 @@
 			alert('Again Input new admin PW!!');
 			form.admin_pw_again.focus();
 			
-		} else if (form.admin_pw.value === form.admin_pw_again.value) {
+		} else if (form.admin_pw.value !== form.admin_pw_again.value) {
 			alert('Check admin password!!');
 			form.admin_pw.value = '';
 			form.admin_pw_again.value = '';

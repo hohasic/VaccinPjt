@@ -35,6 +35,9 @@ public class MemberController extends HttpServlet {
 			
 		case "/signup_confirm.mem":		// 회원가입 확인
 			
+			memberService = new MemberService(new MemberDao());
+			int resultForSignupConfirm = memberService.signupConfirm(request, response);
+			
 			break;
 
 		}
