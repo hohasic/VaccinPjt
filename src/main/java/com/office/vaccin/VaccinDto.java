@@ -12,6 +12,8 @@ public class VaccinDto {
 	private String fvp_reg_date;
 	
 	private SocialNumberDto socialNumberDto;
+	private LocationDto locationDto;
+	private TypeDto typeDto;
 	
 	public VaccinDto() { }
 
@@ -107,6 +109,22 @@ public class VaccinDto {
 
 	public void setSocialNumberDto(SocialNumberDto socialNumberDto) {
 		this.socialNumberDto = socialNumberDto;
+	}
+
+	public LocationDto getLocationDto() {
+		return locationDto;
+	}
+
+	public void setLocationDto(LocationDto locationDto) {
+		this.locationDto = locationDto;
+	}
+
+	public TypeDto getTypeDto() {
+		return typeDto;
+	}
+
+	public void setTypeDto(TypeDto typeDto) {
+		this.typeDto = typeDto;
 	}
 
 }

@@ -8,6 +8,14 @@ public class SocialNumberDto {
 	private String ss_phone;
 	private String ss_reg_date;
 	
+	public SocialNumberDto(String ss_number, String ss_name, String ss_addr, String ss_phone, String ss_reg_date) {
+		this.ss_number = ss_number;
+		this.ss_name = ss_name;
+		this.ss_addr = ss_addr;
+		this.ss_phone = ss_phone;
+		this.ss_reg_date = ss_reg_date;
+	}
+	
 	public String getSs_number() {
 		return ss_number;
 	}

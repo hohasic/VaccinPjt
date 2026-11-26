@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.office.DatabaseInfo;
@@ -69,6 +70,7 @@ public class VaccinDao implements DatabaseInfo {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
+		List<VaccinDto> vaccinDtos = new ArrayList<VaccinDto>();
 		
 		try {
 			
@@ -94,16 +96,42 @@ public class VaccinDao implements DatabaseInfo {
 				// VaccinDto
 				int fvp_no = rs.getInt("fvp_no");
 				String fvp_name = rs.getString("fvp_name");
-				String ss_number = rs.getString("ss_number");
 				String fvp_mail = rs.getString("fvp_mail");
 				String fvp_phone = rs.getString("fvp_phone");
-				int fv_location_no = rs.getInt("fv_location_no");
-				String fv_type = rs.getString("fv_type");
 				String fvp_reg_date = rs.getString("fvp_reg_date");
 				
 				// SocialNumberDto
+				String ss_number = rs.getString("ss_number");
+				String ss_name = rs.getString("ss_name");
+				String ss_addr = rs.getString("ss_addr");
+				String ss_phone = rs.getString("ss_phone");
+				String ss_reg_date = rs.getString("ss_reg_date");
 				
+				// LocationDto
+				int fv_location_no = rs.getInt("fv_location_no");
+				String fv_location_name = rs.getString("fv_location_name");
+				String fv_location_addr = rs.getString("fv_location_addr");
+				String fv_location_phone = rs.getString("fv_location_phone");
+				String fv_location_manager = rs.getString("fv_location_manager");
 				
+				// TypeDto
+				int fv_type_no = rs.getInt("fv_type_no");
+				String fv_type = rs.getString("fv_type");
+				String fv_type_manuf_country = rs.getString("fv_type_manuf_country");
+				String fv_type_manuf_date = rs.getString("fv_type_manuf_date");
+				
+				// assemble
+				VaccinDto vaccinDto = new VaccinDto(fvp_no, fvp_name, null, fvp_mail, fvp_phone, 0, null, fvp_reg_date);
+				
+				SocialNumberDto socialNumberDto = new SocialNumberDto(ss_number, ss_name, ss_addr, ss_phone, ss_reg_date);
+				LocationDto locationDto = new LocationDto(fv_location_no, fv_location_name, fv_location_addr, fv_location_phone, fv_location_manager);
+				TypeDto typeDto = new TypeDto(fv_type_no, fv_type, fv_type_manuf_country, fv_type_manuf_date);
+				
+				vaccinDto.setSocialNumberDto(socialNumberDto);
+				vaccinDto.setLocationDto(locationDto);
+				vaccinDto.setTypeDto(typeDto);
+				
+				vaccinDtos.add(vaccinDto);
 				
 			}
 			
@@ -125,7 +153,7 @@ public class VaccinDao implements DatabaseInfo {
 			
 		}
 		
-		return result;
+		return vaccinDtos;
 		
 	}
 

@@ -46,6 +46,8 @@ public class VaccinController extends HttpServlet {
 			vaccinService = new VaccinService(new VaccinDao());
 			vaccinService.listup(request, response);
 			
+			nextPage = generateView("registed_list");
+			
 			break;
 
 		}
