@@ -3,6 +3,8 @@ package com.office.vaccin;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.List;
 
 import com.office.DatabaseInfo;
 
@@ -48,6 +50,71 @@ public class VaccinDao implements DatabaseInfo {
 			
 			try {
 				
+				if (pstmt != null) pstmt.close();
+				if (conn != null) conn.close();
+				
+			} catch (Exception e2) {
+				e2.printStackTrace();
+				
+			}
+			
+		}
+		
+		return result;
+		
+	}
+
+	public List<VaccinDto> selectRegistedPerson() {
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			
+			Class.forName(DRIVER);
+			
+			conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+			
+			String sql =  "select * from tbl_flu_vaccin_person fvp "
+						+ "join tbl_social_number sn "
+						+ "on fvp.ss_number = sn.ss_number "
+						+ "join tbl_fv_location fl  "
+						+ "on fvp.fv_location_no = fl.fv_location_no  "
+						+ "join tbl_fv_type ft  "
+						+ "on fvp.fv_type = ft.fv_type  "
+						+ "order by fvp.fvp_no desc";
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				
+				// VaccinDto
+				int fvp_no = rs.getInt("fvp_no");
+				String fvp_name = rs.getString("fvp_name");
+				String ss_number = rs.getString("ss_number");
+				String fvp_mail = rs.getString("fvp_mail");
+				String fvp_phone = rs.getString("fvp_phone");
+				int fv_location_no = rs.getInt("fv_location_no");
+				String fv_type = rs.getString("fv_type");
+				String fvp_reg_date = rs.getString("fvp_reg_date");
+				
+				// SocialNumberDto
+				
+				
+				
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			
+		} finally {
+			
+			try {
+				
+				if (rs != null) rs.close();
 				if (pstmt != null) pstmt.close();
 				if (conn != null) conn.close();
 				

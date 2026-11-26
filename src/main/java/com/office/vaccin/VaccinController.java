@@ -40,6 +40,13 @@ public class VaccinController extends HttpServlet {
 			nextPage = generateView("registe_result");
 			
 			break;
+			
+		case "/injection_list.vac":
+			
+			vaccinService = new VaccinService(new VaccinDao());
+			vaccinService.listup(request, response);
+			
+			break;
 
 		}
 		

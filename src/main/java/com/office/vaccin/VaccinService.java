@@ -1,5 +1,7 @@
 package com.office.vaccin;
 
+import java.util.List;
+
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
@@ -36,6 +38,14 @@ public class VaccinService {
 		request.setAttribute("resultForRegist", result);
 		
 		return result;
+		
+	}
+
+	public void listup(HttpServletRequest request, HttpServletResponse response) {
+		
+		List<VaccinDto> vaccinDtos = vaccinDao.selectRegistedPerson();
+		
+		request.setAttribute("vaccinDtos", vaccinDtos);
 		
 	}
 	

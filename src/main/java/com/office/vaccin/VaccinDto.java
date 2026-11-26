@@ -11,6 +11,8 @@ public class VaccinDto {
 	private String fv_type;
 	private String fvp_reg_date;
 	
+	private SocialNumberDto socialNumberDto;
+	
 	public VaccinDto() { }
 
 	public VaccinDto(int fvp_no, String fvp_name, String ss_number, String fvp_mail, String fvp_phone,
@@ -98,5 +100,13 @@ public class VaccinDto {
 	public void setFvp_reg_date(String fvp_reg_date) {
 		this.fvp_reg_date = fvp_reg_date;
 	}
-	
+
+	public SocialNumberDto getSocialNumberDto() {
+		return socialNumberDto;
+	}
+
+	public void setSocialNumberDto(SocialNumberDto socialNumberDto) {
+		this.socialNumberDto = socialNumberDto;
+	}
+
 }
