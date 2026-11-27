@@ -49,6 +49,15 @@ public class VaccinController extends HttpServlet {
 			nextPage = generateView("registed_list");
 			
 			break;
+			
+		case "/injection_modify.vac":
+			
+			vaccinService = new VaccinService(new VaccinDao());
+			vaccinService.selectVaccinDto(request, response);
+			
+			nextPage = generateView("modify_form");
+			
+			break;
 
 		}
 		

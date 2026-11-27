@@ -48,5 +48,15 @@ public class VaccinService {
 		request.setAttribute("vaccinDtos", vaccinDtos);
 		
 	}
+
+	public void selectVaccinDto(HttpServletRequest request, HttpServletResponse response) {
+		
+		int fvp_no = Integer.parseInt(request.getParameter("fvp_no"));
+		
+		VaccinDto selectedVaccinDto = vaccinDao.selectVaccinDtoByFvpNo(fvp_no);
+		
+		request.setAttribute("selectedVaccinDto", selectedVaccinDto);
+		
+	}
 	
 }
