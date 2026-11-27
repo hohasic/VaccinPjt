@@ -50,20 +50,20 @@
 				<br>
 				<select class="basic_select" name="fv_location_no">
 					<option value="">-- 선택 --</option>
-					<option value="1001">A접종처</option>
-					<option value="1002">B접종처</option>
-					<option value="1003">C접종처</option>
-					<option value="1004">D접종처</option>		
-					<option value="1005">E접종처</option>	
+					<option value="1001" <c:if test="${selectedVaccinDto.fv_location_no eq '1001'}">selected</c:if>>A접종처</option>
+					<option value="1002" <c:if test="${selectedVaccinDto.fv_location_no eq '1002'}">selected</c:if>>B접종처</option>
+					<option value="1003" <c:if test="${selectedVaccinDto.fv_location_no eq '1003'}">selected</c:if>>C접종처</option>
+					<option value="1004" <c:if test="${selectedVaccinDto.fv_location_no eq '1004'}">selected</c:if>>D접종처</option>		
+					<option value="1005" <c:if test="${selectedVaccinDto.fv_location_no eq '1005'}">selected</c:if>>E접종처</option>	
 				</select>
 				<br>
 				<select class="basic_select" name="fv_type">
 					<option value="">-- 선택 --</option>
-					<option value="A">A</option>
-					<option value="B">B</option>
-					<option value="C">C</option>
-					<option value="D">D</option>
-					<option value="E">E</option>
+					<option value="A" <c:if test="${selectedVaccinDto.fv_type eq 'A'}">selected</c:if>>A</option>
+					<option value="B" <c:if test="${selectedVaccinDto.fv_type eq 'B'}">selected</c:if>>B</option>
+					<option value="C" <c:if test="${selectedVaccinDto.fv_type eq 'C'}">selected</c:if>>C</option>
+					<option value="D" <c:if test="${selectedVaccinDto.fv_type eq 'D'}">selected</c:if>>D</option>
+					<option value="E" <c:if test="${selectedVaccinDto.fv_type eq 'E'}">selected</c:if>>E</option>
 				</select>
 				<br>
 				<input class="basic_button" type="button" value="MODIFY" onclick="modifyForm();">
