@@ -27,6 +27,8 @@
 				action="<%= request.getContextPath() %>/injection_modify_confirm.vac"
 				method="POST"
 				name="modify_form">
+				
+				<input type="hidden" name="fvp_no" value="${selectedVaccinDto.fvp_no}">
 			
 				<input class="basic_input" type="text" name="fvp_name" value="${selectedVaccinDto.fvp_name}" placeholder="Input name">
 				<br>
